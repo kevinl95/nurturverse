@@ -25,6 +25,12 @@ Required secrets:
 Deployment checklist:
 1. Create Firebase project `nurturverse`.
 2. Enable Firestore in production mode.
+3. Enable required Google Cloud APIs:
+	- Cloud Functions API (`cloudfunctions.googleapis.com`)
+	- Cloud Build API (`cloudbuild.googleapis.com`)
+	- Artifact Registry API (`artifactregistry.googleapis.com`)
+	- Firestore API (`firestore.googleapis.com`)
+	- Cloud Logging API (`logging.googleapis.com`)
 3. Add `FIREBASE_SERVICE_ACCOUNT_NURTURVERSE` GitHub repo secret.
 4. Push changes to `main` to trigger deployment.
 
