@@ -3,13 +3,16 @@ import "dart:math";
 import "package:flutter/foundation.dart";
 
 import "../models/plant.dart";
+import "../services/boinc_bridge.dart";
 
 class GardenState extends ChangeNotifier {
   GardenState({
     required this.rows,
     required this.columns,
-  }) {
+    BoincBridge? bridge,
+  }) : _bridge = bridge ?? BoincBridge() {
     _plants = List.generate(rows * columns, (_) => _newPlant());
+    _minutesSubscription = _bridge.minutesStream().listen(addBoincMinutes);
   }
 
   final int rows;
@@ -23,6 +26,8 @@ class GardenState extends ChangeNotifier {
   ];
 
   final Random _random = Random();
+  final BoincBridge _bridge;
+  late final StreamSubscription<int> _minutesSubscription;
   late List<PlantInstance> _plants;
   int totalPoints = 0;
   int totalBoincMinutes = 0;
@@ -30,8 +35,14 @@ class GardenState extends ChangeNotifier {
 
   List<PlantInstance> get plants => _plants;
 
-  void toggleBoinc() {
-    boincRunning = !boincRunning;
+  Future<void> toggleBoinc() async {
+    if (boincRunning) {
+      await _bridge.stop();
+      boincRunning = false;
+    } else {
+      await _bridge.start();
+      boincRunning = true;
+    }
     notifyListeners();
   }
 
@@ -59,5 +70,11 @@ class GardenState extends ChangeNotifier {
   PlantInstance _newPlant() {
     final type = plantTypes[_random.nextInt(plantTypes.length)];
     return PlantInstance(type: type, growth: 0.0);
+  }
+
+  @override
+  void dispose() {
+    _minutesSubscription.cancel();
+    super.dispose();
   }
 }

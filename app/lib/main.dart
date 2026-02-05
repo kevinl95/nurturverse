@@ -59,7 +59,9 @@ class _GardenScreenState extends State<GardenScreen> {
           children: [
             BoincStatusBar(
               running: _state.boincRunning,
-              onToggle: _state.toggleBoinc,
+              onToggle: () {
+                _state.toggleBoinc();
+              },
               totalMinutes: _state.totalBoincMinutes,
               totalPoints: _state.totalPoints,
             ),

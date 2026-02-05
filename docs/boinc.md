@@ -16,3 +16,15 @@ Nurturverse embeds the BOINC Android client **in-process** and allows it to run 
 - Background execution on Android should use a foreground service to comply with platform requirements.
 - Ensure battery usage disclosure and user consent prior to enabling background compute.
 - See the local BOINC clone (not committed) for build scripts and Android client sources.
+
+## Flutter Platform Channels
+The Flutter app expects these channels:
+- MethodChannel: `nurturverse/boinc`
+  - `start` → `bool`
+  - `stop` → `bool`
+  - `isRunning` → `bool`
+- EventChannel: `nurturverse/boinc_events`
+  - emits integer minutes of completed BOINC runtime
+
+Native Android should forward BOINC runtime updates to the EventChannel and keep
+the foreground service alive while running.

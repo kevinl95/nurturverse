@@ -17,3 +17,8 @@ This folder contains the Flutter Android app prototype for Nurturverse.
 ## Notes
 - BOINC integration is currently simulated with +5/+30 minute buttons.
 - Replace tile visuals with the Full Garden Game sprites when assets are available.
+
+## BOINC Bridge
+The app expects native Android to implement:
+- MethodChannel: `nurturverse/boinc` (`start`, `stop`, `isRunning`)
+- EventChannel: `nurturverse/boinc_events` (emits completed minutes)
