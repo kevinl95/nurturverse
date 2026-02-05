@@ -16,7 +16,7 @@ See [nurturverse/docs/boinc.md](nurturverse/docs/boinc.md) for the in-process BO
 
 ## Leaderboard & Identity
 - Firebase project name: **nurturverse**
-- Leaderboard identity: Google Play Games handles
+- Leaderboard identity: anonymous handles with optional display names
 
 ## Web + Backend
 A Firebase-backed web site and API are scaffolded in [nurturverse/web](nurturverse/web). The site provides a basic landing page, leaderboard display, and a placeholder Play Store link.

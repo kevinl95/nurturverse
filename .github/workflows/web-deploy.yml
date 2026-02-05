@@ -4,8 +4,8 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "nurturverse/web/**"
-      - "nurturverse/.github/workflows/web-deploy.yml"
+      - "web/**"
+      - ".github/workflows/web-deploy.yml"
 
 jobs:
   deploy:
@@ -20,14 +20,14 @@ jobs:
           node-version: 18
 
       - name: Install Functions Dependencies
-        working-directory: nurturverse/web/functions
+        working-directory: web/functions
         run: npm install
 
       - name: Install Firebase Tools
         run: npm install -g firebase-tools
 
       - name: Deploy to Firebase
-        working-directory: nurturverse/web
+        working-directory: web
         env:
           FIREBASE_SERVICE_ACCOUNT_NURTURVERSE: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_NURTURVERSE }}
         run: |
