@@ -34,6 +34,12 @@ Deployment checklist:
 3. Add `FIREBASE_SERVICE_ACCOUNT_NURTURVERSE` GitHub repo secret.
 4. Push changes to `main` to trigger deployment.
 
+## Common Deploy Error: Service Account Permissions
+If you see:
+"Error: Missing permissions required for functions deploy. You must have permission iam.serviceAccounts.ActAs on service account nurturverse@appspot.gserviceaccount.com."
+
+Ask a project Owner to grant your account the **Service Account User** role on the App Engine service account.
+
 ## Leaderboard Identity
 Anonymous handles only (no login). Users can choose an optional display name.
 
