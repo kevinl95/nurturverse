@@ -22,3 +22,5 @@ This folder contains the Flutter Android app prototype for Nurturverse.
 The app expects native Android to implement:
 - MethodChannel: `nurturverse/boinc` (`start`, `stop`, `isRunning`)
 - EventChannel: `nurturverse/boinc_events` (emits completed minutes)
+
+See [nurturverse/app/android/README.md](nurturverse/app/android/README.md) for the native Android scaffolding.

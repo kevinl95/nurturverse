@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Nurturverse</string>
+    <string name="boinc_notification_title">Nurturverse</string>
+    <string name="boinc_notification_body">Nurturverse is running scientific jobs in the background</string>
+</resources>
