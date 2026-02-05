@@ -15,7 +15,6 @@ Default project: **nurturverse**
 1. Install Firebase CLI.
 2. Initialize Firebase in this folder if you need to regenerate configs.
 3. Use Firebase emulators to run hosting + functions locally.
-
 ## Deployment
 GitHub Actions workflow: [nurturverse/.github/workflows/web-deploy.yml](nurturverse/.github/workflows/web-deploy.yml)
 
