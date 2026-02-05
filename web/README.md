@@ -22,6 +22,12 @@ GitHub Actions workflow: [nurturverse/.github/workflows/web-deploy.yml](nurturve
 Required secrets:
 - FIREBASE_SERVICE_ACCOUNT_NURTURVERSE — JSON service account key with Hosting + Functions deploy permissions
 
+Deployment checklist:
+1. Create Firebase project `nurturverse`.
+2. Enable Firestore in production mode.
+3. Add `FIREBASE_SERVICE_ACCOUNT_NURTURVERSE` GitHub repo secret.
+4. Push changes to `main` to trigger deployment.
+
 ## Leaderboard Identity
 Anonymous handles only (no login). Users can choose an optional display name.
 
@@ -37,3 +43,23 @@ Store it locally on first launch and reuse it for all submissions.
 ## Profanity Filter
 The backend uses the `bad-words` library to screen `handle` and `displayName`.
 If a name is blocked, the API returns a 400 error.
+
+## API
+Base URL: Firebase Hosting origin
+
+### Submit Score
+`POST /submitScore`
+
+Payload:
+- `handle` (string)
+- `displayName` (string, optional)
+- `points` (number, positive)
+
+Response:
+`{ "ok": true, "handle": "..." }`
+
+### Leaderboard
+`GET /leaderboard`
+
+Response:
+`{ "leaders": [{ "rank": 1, "handle": "...", "displayName": "...", "points": 123 }] }`
