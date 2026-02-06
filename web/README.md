@@ -28,8 +28,13 @@ Deployment checklist:
 	- Cloud Functions API (`cloudfunctions.googleapis.com`)
 	- Cloud Build API (`cloudbuild.googleapis.com`)
 	- Artifact Registry API (`artifactregistry.googleapis.com`)
+	- Firebase Extensions API (`firebaseextensions.googleapis.com`)
 	- Firestore API (`firestore.googleapis.com`)
 	- Cloud Logging API (`logging.googleapis.com`)
+	- Cloud Run API (`run.googleapis.com`)
+	- Eventarc API (`eventarc.googleapis.com`)
+	- Pub/Sub API (`pubsub.googleapis.com`)
+	- Cloud Storage API (`storage.googleapis.com`)
 3. Add `FIREBASE_SERVICE_ACCOUNT_NURTURVERSE` GitHub repo secret.
 4. Push changes to `main` to trigger deployment.
 
@@ -37,6 +42,9 @@ Deployment checklist:
 Deploying identity must have both roles:
 - **Service Account User** (`roles/iam.serviceAccountUser`) on `nurturverse@appspot.gserviceaccount.com`
 - **Service Usage Consumer** (`roles/serviceusage.serviceUsageConsumer`)
+
+Common additional role needed for deploys:
+- **Cloud Functions Admin** (`roles/cloudfunctions.admin`)
 
 If you see:
 "Error: Missing permissions required for functions deploy. You must have permission iam.serviceAccounts.ActAs on service account nurturverse@appspot.gserviceaccount.com."
