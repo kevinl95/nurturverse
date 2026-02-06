@@ -34,10 +34,14 @@ Deployment checklist:
 4. Push changes to `main` to trigger deployment.
 
 ## Common Deploy Error: Service Account Permissions
+Deploying identity must have both roles:
+- **Service Account User** (`roles/iam.serviceAccountUser`) on `nurturverse@appspot.gserviceaccount.com`
+- **Service Usage Consumer** (`roles/serviceusage.serviceUsageConsumer`)
+
 If you see:
 "Error: Missing permissions required for functions deploy. You must have permission iam.serviceAccounts.ActAs on service account nurturverse@appspot.gserviceaccount.com."
 
-Ask a project Owner to grant your account the **Service Account User** role on the App Engine service account.
+Ask a project Owner to grant the roles above.
 
 ## Leaderboard Identity
 Anonymous handles only (no login). Users can choose an optional display name.
